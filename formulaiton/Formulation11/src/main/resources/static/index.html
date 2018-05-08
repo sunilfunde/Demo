@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spring Angular Project</title>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/smart-table.min.js"></script>
+<script type="text/javascript" src="js/myfile.js"></script>
+
+
+</head>
+
+<body>
+<table align="center">
+<div ng-app="myapplication" ng-controller="mycontroller">
+
+Formulation Id:
+<input type="text" ng-model="prodObj.fromId">
+<br>
+
+
+
+Formulation Name:
+<input type="text" ng-model="prodObj.formulationname">
+<br>
+
+
+ <button type="button" class="btn btn-primary" ng-click="saveOrUpdate(prodObj)">Save</button>
+ 
+
+<br>
+
+</table>
+
+
+
+<div ng-init="getProductData(prodObj)">
+	<table st-table="displayedCollection" st-safe-src="prodObj" class="table table-responsive table-bordered table-striped">
+			<thead>
+			<tr>
+			
+			
+			 <th st-sort="row.fromId">Formulation No</th> 
+				 <th st-sort="row.formulationname">Formulation Name</th>
+				
+							
+			</tr>
+			<tr>
+				<th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="row in displayedCollection">
+			
+				<td>{{row.fromId}}</td>
+				<td>{{row.formulationname}}</td>
+				
+			</tr>
+			</tbody>
+			
+			<tfoot>
+			  <tr>
+			      <td colspan="5" class="text-center">
+			         <div st-pagination="" st-items-by-page="8" st-displayed-pages="2"></div>
+			      </td>
+			  </tr>
+			</tfoot>
+			
+		</table>
+</div>
+</div>
+
+</body>
+</html>
